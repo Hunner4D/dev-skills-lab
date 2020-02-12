@@ -7,12 +7,11 @@ $(document).ready(function () {
 
     $('#skills tbody').on('click', 'button', function () {
         var row = $(this).closest('tr');
-        // Before we remove the row, save it's outerHTML
+        
         removedSkills.push(row[0].outerHTML);
         row.fadeOut(500, function () {
             row.remove();
         });
-        // Ensure that the "Restore Removed Skills" button is enabled
         $('#restoreSkills').removeAttr('disabled');
     });
 
@@ -51,10 +50,7 @@ $(document).ready(function () {
         removedSkills.forEach(function (skill) {
             $('#skills tbody').append(skill);
         });
-        // Clear the removedSkills array
         removedSkills = [];
-        // Disable the button
-        // Note that the disabled attribute does not need a value
         $('#restoreSkills').attr('disabled', '');
     });
 
